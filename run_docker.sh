@@ -10,4 +10,4 @@ docker build --tag=project-ml .
 docker images ls
 # Step 3: 
 # Run flask app
-docker run -ti --name project-ml -p80:80 project-ml
+docker run -ti --name project-ml -p8080:8080 project-ml
