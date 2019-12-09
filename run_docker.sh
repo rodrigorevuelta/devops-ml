@@ -4,10 +4,10 @@
 
 # Step 1:
 # Build image and add a descriptive tag
-docker build --tag=project-ml
+docker build --tag=project-ml .
 # Step 2: 
 # List docker images
 docker images ls
 # Step 3: 
 # Run flask app
-docker run -ti project-ml bash
+docker run -ti --name project-ml -p80:80 project-ml
