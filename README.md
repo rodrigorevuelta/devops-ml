@@ -1,5 +1,31 @@
 [![CircleCI](https://circleci.com/gh/rodrigorevuelta/devops-ml.svg?style=svg)](https://circleci.com/gh/rodrigorevuelta/devops-ml)
 
+
+##Summary
+This repo contains the files to deploy on python venv, docker and kubernetes a machine learning microservice api.
+
+##Instructions
+
+Local deployment: 
+ - run $ make setup && source ~/.devop&& make
+ - in other console call to the script make_predictions.sh (using url)
+
+Docker deployment:
+ - run $./run_docker.sh and wait to run the container
+ - in other console call to the script make_predictions.sh (using url:)
+
+Kubernetes deployment:
+
+##Files in the repo
+app.py -> application that uses flask, scikit-learn and pandas to get a prediction about housing prices in boston
+
+
+
+##DELETE AFTER THIS MARK
+A summary of the project
+Instructions on how to run the Python scripts and web app (simply listing command line calls will suffice), and
+A short explanation of the files in the repository.
+
 ## Project Overview
 
 In this project, you will apply the skills you have acquired in this course to operationalize a Machine Learning Microservice API. 

@@ -10,4 +10,4 @@ docker build --tag=devops-ml .
 docker images ls
 # Step 3: 
 # Run flask app
-docker run -ti --name devops-ml -p8080:8080 devops-ml
+docker run -ti --rm --name devops-ml -p8080:8080 devops-ml

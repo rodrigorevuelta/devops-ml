@@ -1,1 +1,29 @@
-<paste log output from Kubernetes-mediated prediction, here>
+output of run_kubernetest.sh
+
+deployment.apps/devops-ml created
+NAME                         READY   STATUS              RESTARTS   AGE
+devops-ml-697db4ccd5-57v5k   0/1     ContainerCreating   0          1s
+service/devops-ml exposed
+Starting to serve on [::]:8080
+
+beta:~/devops-ml$ kubectl logs service/devops-ml
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+/usr/local/lib/python3.7/site-packages/sklearn/base.py:251: UserWarning: Trying to unpickle estimator DecisionTreeRegressor from version 0.20.3 when using version 0.20.2. This might lead to breaking code or invalid results. Use at your own risk.
+  UserWarning)
+/usr/local/lib/python3.7/site-packages/sklearn/base.py:251: UserWarning: Trying to unpickle estimator GradientBoostingRegressor from version 0.20.3 when using version 0.20.2. This might lead to breaking code or invalid results. Use at your own risk.
+  UserWarning)
+ * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+[2019-12-10 17:04:09,719] INFO in app: JSON payload:
+{'CHAS': {'0': 0}, 'RM': {'0': 6.575}, 'TAX': {'0': 296.0}, 'PTRATIO': {'0': 15.3}, 'B': {'0': 396.9}, 'LSTAT': {'0': 4.98}}
+[2019-12-10 17:04:09,721] INFO in app: Inference payload DataFrame:
+   CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2019-12-10 17:04:09,733] INFO in app: Scaling Payload:
+    CHAS     RM    TAX  PTRATIO      B  LSTAT
+0     0  6.575  296.0     15.3  396.9   4.98
+[2019-12-10 17:04:09,747] INFO in app: Prediction value: [20.35373177134412]
+10.244.0.1 - - [10/Dec/2019 17:04:09] "POST /predict HTTP/1.1" 200 -

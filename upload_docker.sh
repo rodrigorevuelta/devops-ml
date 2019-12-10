@@ -6,12 +6,13 @@
 # Step 1:
 # Create dockerpath
 # dockerpath=<your docker ID/path>
+imagename=devops-ml
 dockerpath=rodrigorr/devops-ml
 # Step 2:  
 # Authenticate & tag
 echo "Docker ID and Image: $dockerpath"
 docker login
-docker tag $dockerpath
+docker tag $imagename $dockerpath
 # Step 3:
 # Push image to a docker repository
 docker push $dockerpath
