@@ -2,7 +2,7 @@
 
 PORT=8080
 URL=http://localhost:$PORT/predict
-#URL=http://localhost:$PORT/api/v1/namespaces/default/services/project-ml/proxy/predict
+#URL=http://localhost:$PORT/api/v1/namespaces/default/services/devops-ml/proxy/predict
 
 echo "Port: $PORT"
 
