@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 PORT=8080
+URL=http://localhost:$PORT/predict
+#URL=http://localhost:$PORT/api/v1/namespaces/default/services/project-ml/proxy/predict
+
 echo "Port: $PORT"
 
 # POST method predict
@@ -25,4 +28,4 @@ curl -d '{
    }
 }'\
      -H "Content-Type: application/json" \
-     -X POST http://localhost:$PORT/predict
+     -X POST $URL
