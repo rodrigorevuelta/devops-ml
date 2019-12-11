@@ -1,68 +1,35 @@
 [![CircleCI](https://circleci.com/gh/rodrigorevuelta/devops-ml.svg?style=svg)](https://circleci.com/gh/rodrigorevuelta/devops-ml)
 
-
 ##Summary
-This repo contains the files to deploy on python venv, docker and kubernetes a machine learning microservice api.
+This repo contains the files to deploy on python venv, docker and kubernetes a machine learning microservice api thas has been trained to predict housing prices in Boston according to several features, such as average rooms in a home and data about highway access, teacher-to-pupil ratios, and so on (more info on www.kaggle.com/c/boston-housing)
 
 ##Instructions
 
 Local deployment: 
  - run $ make setup && source ~/.devop&& make
- - in other console call to the script make_predictions.sh (using url)
+ - in other console call to the script make_predictions.sh (using url:http://localhost:$PORT/predict)
 
 Docker deployment:
  - run $./run_docker.sh and wait to run the container
- - in other console call to the script make_predictions.sh (using url:)
+ - in other console call to the script make_predictions.sh (using url:http://localhost:$PORT/predict)
+ - to push the repo in the docker hub call the script $./upload_docker.sh
 
 Kubernetes deployment:
+ - run $./run_kubernetes.sh and wait for the running status of the pod
+ - call to the script make_prediction.sh (using url:http://localhost:$PORT/api/v1/namespaces/default/services/devops-ml/proxy/predict)
+ - you can see the logs of the service doing $kubectl logs service/devops-ml
 
 ##Files in the repo
-app.py -> application that uses flask, scikit-learn and pandas to get a prediction about housing prices in boston
-
-
-
-##DELETE AFTER THIS MARK
-A summary of the project
-Instructions on how to run the Python scripts and web app (simply listing command line calls will suffice), and
-A short explanation of the files in the repository.
-
-## Project Overview
-
-In this project, you will apply the skills you have acquired in this course to operationalize a Machine Learning Microservice API. 
-
-You are given a pre-trained, `sklearn` model that has been trained to predict housing prices in Boston according to several features, such as average rooms in a home and data about highway access, teacher-to-pupil ratios, and so on. You can read more about the data, which was initially taken from Kaggle, on [the data source site](https://www.kaggle.com/c/boston-housing). This project tests your ability to operationalize a Python flask app—in a provided file, `app.py`—that serves out predictions (inference) about housing prices through API calls. This project could be extended to any pre-trained machine learning model, such as those for image recognition and data labeling.
-
-### Project Tasks
-
-Your project goal is to operationalize this working, machine learning microservice using [kubernetes](https://kubernetes.io/), which is an open-source system for automating the management of containerized applications. In this project you will:
-* Test your project code using linting
-* Complete a Dockerfile to containerize this application
-* Deploy your containerized application using Docker and make a prediction
-* Improve the log statements in the source code for this application
-* Configure Kubernetes and create a Kubernetes cluster
-* Deploy a container using Kubernetes and make a prediction
-* Upload a complete Github repo with CircleCI to indicate that your code has been tested
-
-You can find a detailed [project rubric, here](https://review.udacity.com/#!/rubrics/2576/view).
-
-**The final implementation of the project will showcase your abilities to operationalize production microservices.**
-
----
-
-## Setup the Environment
-
-* Create a virtualenv and activate it
-* Run `make install` to install the necessary dependencies
-
-### Running `app.py`
-
-1. Standalone:  `python app.py`
-2. Run in Docker:  `./run_docker.sh`
-3. Run in Kubernetes:  `./run_kubernetes.sh`
-
-### Kubernetes Steps
-
-* Setup and Configure Docker locally
-* Setup and Configure Kubernetes locally
-* Create Flask app in Container
-* Run via kubectl
+app.py -> application that uses flask, scikit-learn and pandas to get a prediction (in this case use the model about price housing in boston)
+model_data/bostou_housing_prediction.joblib -> the trained model with data about price housing in boston
+model_data/housing.csv -> data about prices
+Dockerfile -> file to build the docker image
+Makefile -> file to build local service
+make_predictions.sh -> script for call the app.py
+output_txt_files->output of build the service in docker and kubernetes
+requirements.txt -> libraries needed by app.py
+run_docker.sh -> script to help the build of the docker image
+upload_docker.sh -> script to help to upload the image to docker hub
+run_kubernetes.sh -> script to help the deploy of the service in kubernetes
+tests/ -> files to test the service
+README.md -> this file
